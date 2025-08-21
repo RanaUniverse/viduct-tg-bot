@@ -1,2 +1,6 @@
 .env
 __pycache__
+
+
+# The Log file should not be trigger. Below is the file name of the log.
+RanaUniverse_Log_File.log

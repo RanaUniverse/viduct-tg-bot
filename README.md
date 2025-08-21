@@ -23,3 +23,8 @@ uv run main.py
 
 This Repo is connected with,
 [Viduct-API](https://github.com/razorblade23/Viduct-API)
+
+
+## Structer of my repo
+> How my code is logically separated, i will write those thigns here...
+

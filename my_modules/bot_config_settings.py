@@ -15,6 +15,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
+# Here below will the name of some variables which i will use
+
+LOG_FILE_NAME = "RanaUniverse_Log_File.log"
+BOT_FUNCTIONALITY_NAME = "Viduct-Bot"
+
+
 BOT_TOKEN_GET = os.environ.get("BOT_TOKEN")
 if BOT_TOKEN_GET is None:
     print(
@@ -36,7 +43,6 @@ BOT_USERNAME = f"{BOT_USERNAME_GET}"
 
 GMT_TIMEZONE = datetime.timezone(datetime.timedelta(hours=0, minutes=0))
 IST_TIMEZONE = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
-
 
 
 # This below values is working for me, so before run the script
