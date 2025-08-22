@@ -9,6 +9,8 @@ from telegram.ext import ContextTypes
 
 from my_modules import message_template
 
+from my_modules.language import get_user_prefer_language
+
 
 async def start_cmd_private(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """
@@ -19,10 +21,13 @@ async def start_cmd_private(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     if user is None or msg is None:
         return None
 
-    lang_code = user.language_code
+    lang_code = get_user_prefer_language(user.id)
     if not lang_code:
-        lang_code = "en"
-    # i make the default langauge as english when it will not in the api
+        await msg.reply_html(
+            "You Have Not Selected Your Language so bye, "
+            "select your language in /language"
+        )
+        return None
 
     text = message_template.generate_welcome_message_on_start(
         user_obj=user,
