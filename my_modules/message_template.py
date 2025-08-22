@@ -4,7 +4,7 @@ Message will be written and i can use those things in other places, so that
 it will easy for me to keep this text generating part here, and code part in
 other main code part.
 
-I am making this text support the html of tg, so i need to make sure, 
+I am making this text support the html of tg, so i need to make sure,
 it will have all valid html tags as per telegram docs
 (https://core.telegram.org/bots/api#html-style)
 
@@ -14,49 +14,48 @@ from telegram import User
 
 
 from my_modules import bot_config_settings
+from my_modules.translation_message import get_value_from_language_json
 
 
 BOT_FUNCTIONALITY_NAME = bot_config_settings.BOT_FUNCTIONALITY_NAME
 
 
-def welcome_message_on_start(user_obj: User):
-    text = (
-        f"Hello {user_obj.mention_html()}"
-        "\n"
-        f"Welcome You to the {BOT_FUNCTIONALITY_NAME}"
-        "\n"
-        f"This Bot Can Help You To Reset Your Device or change device, "
-        "and some more usefull things for you."
+def generate_welcome_message_on_start(
+    user_obj: User,
+    user_language: str = "en",
+):
+    user_safe_name = user_obj.mention_html()
+    start_text_from_json = get_value_from_language_json(user_language, "start")
+    start_welcome_text = start_text_from_json.format(
+        name=user_safe_name,
     )
-    return text
+    # at upper format i need to must know {name} is present in the json
+
+    return start_welcome_text
 
 
-def help_msg(user_obj: User):
-    text = (
-        f"Hello {user_obj.mention_html()},\n"
-        "We are here to assist you! 🚀\n\n"
-        "Currently, this help section is under development. "
-        "Soon, you will be able to find detailed guidance here, "
-        "including:\n"
-        "- How to set up your server 🖥️\n"
-        "- How to configure and use the bot ⚙️\n"
-        "- Tips and solutions for common issues 📘\n\n"
-        "Stay tuned — more helpful content is on the way!"
-    )
-    return text
+def generate_help_msg(
+    user_obj: User,
+    user_language: str = "en",
+):
+    help_text_from_json = get_value_from_language_json(user_language, "help")
+
+    if help_text_from_json is None:
+        return "⚠️ Missing help message in JSON."
+
+    help_text = f"Hi {user_obj.mention_html()}" "\n" + help_text_from_json
+    return help_text
 
 
+def generate_settings_cmd_msg(
+    user_obj: User,
+    user_language: str = "en",
+):
+    settings_text_from_json = get_value_from_language_json(user_language, "settings")
 
+    if settings_text_from_json is None:
+        return "Missing the Settings in Json"
 
-def settings_cmd_msg(user_obj: User):
-    text = (
-        f"Hello {user_obj.mention_html()},\n"
-        "⚙️ The settings feature is not fully available yet.\n\n"
-        "In the future, you will be able to customize your preferences here, "
-        "such as:\n"
-        "- Choosing your preferred language 🌍\n"
-        "- Managing notifications 🔔\n"
-        "- Adjusting privacy and security options 🔒\n\n"
-        "🚧 This section is still under development. Please stay tuned!"
-    )
-    return text
+    settings_text = f"⚙️⚙️⚙️" f"\n" f"{settings_text_from_json}"
+
+    return settings_text

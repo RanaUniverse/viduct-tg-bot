@@ -19,7 +19,15 @@ async def help_cmd_private(update: Update, context: ContextTypes.DEFAULT_TYPE) -
     user = update.effective_user
     if user is None or msg is None:
         return None
+    
+    lang_code = user.language_code
+    if not lang_code:
+        lang_code = "en"
+    # i make the default langauge as english when it will not in the api
 
-    text = message_template.help_msg(user_obj=user)
+    text = message_template.generate_help_msg(
+        user_obj=user,
+        user_language=lang_code,
+    )
 
     await msg.reply_html(text=text)

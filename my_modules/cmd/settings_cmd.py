@@ -13,13 +13,21 @@ async def settings_cmd_private(
     update: Update, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
     """
-    When /help will come in private this will executes for normal users
+    When /settings will come in private this will executes for normal users
     """
     msg = update.effective_message
     user = update.effective_user
     if user is None or msg is None:
         return None
 
-    text = message_template.settings_cmd_msg(user_obj=user)
+    lang_code = user.language_code
+    if not lang_code:
+        lang_code = "en"
+    # i make the default langauge as english when it will not in the api
+
+    text = message_template.generate_settings_cmd_msg(
+        user_obj=user,
+        user_language=lang_code,
+    )
 
     await msg.reply_html(text=text)

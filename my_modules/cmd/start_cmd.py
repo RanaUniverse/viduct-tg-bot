@@ -19,6 +19,15 @@ async def start_cmd_private(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     if user is None or msg is None:
         return None
 
-    text = message_template.welcome_message_on_start(user_obj=user)
+    lang_code = user.language_code
+    if not lang_code:
+        lang_code = "en"
+    # i make the default langauge as english when it will not in the api
+
+    text = message_template.generate_welcome_message_on_start(
+        user_obj=user,
+        user_language=lang_code,
+    )
+    # I make this upper so that, the start message will come form the json
 
     await msg.reply_html(text=text)

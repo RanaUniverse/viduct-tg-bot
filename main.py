@@ -31,10 +31,26 @@ def main() -> None:
     application = Application.builder().token(BOT_TOKEN).build()
 
     # on different commands - answer in Telegram
-    application.add_handler(CommandHandler("start", start_cmd.start_cmd_private))
-    application.add_handler(CommandHandler("help", help_cmd.help_cmd_private))
     application.add_handler(
-        CommandHandler("settings", settings_cmd.settings_cmd_private)
+        CommandHandler(
+            command="start",
+            callback=start_cmd.start_cmd_private,
+            block=False,
+        )
+    )
+    application.add_handler(
+        CommandHandler(
+            command="help",
+            callback=help_cmd.help_cmd_private,
+            block=False,
+        )
+    )
+    application.add_handler(
+        CommandHandler(
+            command="settings",
+            callback=settings_cmd.settings_cmd_private,
+            block=False,
+        )
     )
 
     # on non command i.e message - echo the message on Telegram
