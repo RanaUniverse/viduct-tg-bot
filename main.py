@@ -9,7 +9,7 @@ from telegram.ext import (
 
 from my_modules import bot_config_settings
 
-from my_modules.cmd import start_cmd, help_cmd, settings_cmd
+from my_modules.cmd import start_cmd, help_cmd, settings_cmd, language_cmd
 
 
 # The logger module below is the need to print the errors & warnings in the console so i import the whole module so that i not need to worry about what will happens in login module.
@@ -49,6 +49,13 @@ def main() -> None:
         CommandHandler(
             command="settings",
             callback=settings_cmd.settings_cmd_private,
+            block=False,
+        )
+    )
+    application.add_handler(
+        CommandHandler(
+            command="language",
+            callback=language_cmd.language_cmd,
             block=False,
         )
     )
