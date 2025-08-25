@@ -25,7 +25,11 @@ def generate_welcome_message_on_start(
     user_language: str = "en",
 ):
     user_safe_name = user_obj.mention_html()
-    start_text_from_json = get_value_from_language_json(user_language, "start")
+    start_text_from_json = get_value_from_language_json(user_language, "start_cmd")
+    if start_text_from_json is None:
+        return "Some Error for start"
+        # i will add logger here.
+
     start_welcome_text = start_text_from_json.format(
         name=user_safe_name,
     )
@@ -38,7 +42,7 @@ def generate_help_msg(
     user_obj: User,
     user_language: str = "en",
 ):
-    help_text_from_json = get_value_from_language_json(user_language, "help")
+    help_text_from_json = get_value_from_language_json(user_language, "help_cmd")
 
     if help_text_from_json is None:
         return "⚠️ Missing help message in JSON."
@@ -51,7 +55,7 @@ def generate_settings_cmd_msg(
     user_obj: User,
     user_language: str = "en",
 ):
-    settings_text_from_json = get_value_from_language_json(user_language, "settings")
+    settings_text_from_json = get_value_from_language_json(user_language, "settings_cmd")
 
     if settings_text_from_json is None:
         return "Missing the Settings in Json"

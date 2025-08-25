@@ -10,7 +10,7 @@ from telegram.ext import ContextTypes
 
 from my_modules import message_template
 
-from my_modules.language import get_user_prefer_language
+from my_modules.language import get_user_preferred_language_code
 
 
 async def help_cmd_private(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -22,7 +22,7 @@ async def help_cmd_private(update: Update, context: ContextTypes.DEFAULT_TYPE) -
     if user is None or msg is None:
         return None
 
-    lang_code = get_user_prefer_language(user.id)
+    lang_code = get_user_preferred_language_code(user)
     if not lang_code:
         await msg.reply_html(
             "You Have Not Selected Your Language so bye, "
