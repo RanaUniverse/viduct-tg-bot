@@ -18,7 +18,7 @@ def get_user_prefer_language(tg_user_id: int) -> str | None:
     user_lang_dict = {
         1895194333: "en",
         7914427214: "hi",
-        1844500681: "hr",
+        1844500681: "en",
     }
     lang_value = user_lang_dict.get(tg_user_id, None)
 
