@@ -102,6 +102,26 @@ def register_profile():
     print("Response:", response.json())
 
 
+def get_user_lang(telegram_id: int) -> str | None:
+    final_endpoint = "/client/bot/profile"
+    url = base_url + final_endpoint
+    params = {"telegram_id": telegram_id}
+
+    response = httpx.get(url, params=params)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data.get("preffered_lang", None)
+
+    elif response.status_code == 400:
+        return None
+
+    else:
+        return None
+
+
 if __name__ == "__main__":
-    check_get_profile(111)
+    # check_get_profile(111)
     # register_profile()
+    a = get_user_lang(111)
+    print(a)
