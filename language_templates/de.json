@@ -1,0 +1,7 @@
+{
+    "start_cmd": "👋 Hallo {name}!\n🎉 Willkommen beim Bot. Lass uns anfangen!",
+    "help_cmd": "🆘 Brauchen Sie Hilfe?\n📚 Der Hilfebereich kommt bald. Bleiben Sie dran!",
+    "settings_cmd": "⚙️ Einstellungen\n🔧 Passen Sie Ihr Erlebnis nach Belieben an.",
+    "language_cmd": "🌐 Aktuelle Sprache: <b><u>Deutsch</u></b>\n🔄 Möchten Sie die Sprache wechseln?\n👇 Tippen Sie unten auf eine beliebige Schaltfläche, um Ihre bevorzugte Sprache auszuwählen.",
+    "access_key_ask": "🔐 Bitte senden Sie Ihren Access Key\num den Bot weiter zu verwenden und Ihr Konto sicher zu verwalten."
+}

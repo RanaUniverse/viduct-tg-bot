@@ -1,0 +1,7 @@
+{
+    "start_cmd": "👋 Pozdrav {name}!\n🎉 Dobrodošli u bot. Krenimo!",
+    "help_cmd": "🆘 Trebate pomoć?\n📚 Odjeljak za pomoć uskoro dolazi. Ostanite s nama!",
+    "settings_cmd": "⚙️ Postavke\n🔧 Prilagodite svoje iskustvo kako želite.",
+    "language_cmd": "🌐 Trenutni jezik: <b><u>Hrvatski</u></b>\n🔄 Želite promijeniti jezik?\n👇 Dodirnite bilo koji gumb ispod da odaberete željeni jezik.",
+    "access_key_ask": "🔐 Molimo pošaljite svoj Access Key\nkako biste mogli nastaviti koristiti bot i sigurno upravljati svojim računom."
+}
