@@ -16,7 +16,7 @@ def get_user_prefer_language(tg_user_id: int) -> str | None:
     # i will make a dict for now against the tg_user_id and get his own string
     # 1. Rana Universe, 2. Linux Account, 3. Razorblade (The below values)
     user_lang_dict = {
-        1895194333: "en",
+        1895194333: "bn",
         7914427214: "hi",
         1844500681: "en",
     }
