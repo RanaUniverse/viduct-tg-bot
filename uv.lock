@@ -300,12 +300,14 @@ name = "viduct-tg-bot"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "httpx" },
     { name = "python-dotenv" },
     { name = "python-telegram-bot", extra = ["all"] },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "httpx", specifier = ">=0.28.1" },
     { name = "python-dotenv", specifier = ">=1.1.1" },
     { name = "python-telegram-bot", extras = ["all"], specifier = ">=22.3" },
 ]
