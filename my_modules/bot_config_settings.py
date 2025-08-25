@@ -41,6 +41,19 @@ BOT_TOKEN = f"{BOT_TOKEN_GET}"
 BOT_USERNAME = f"{BOT_USERNAME_GET}"
 
 
+# This below gorup user must need to present there.
+PAID_GROUP_ID = os.environ.get("GROUP_ID_PAID")
+if not PAID_GROUP_ID:
+    raise ValueError("Paid Group Id not found in the .env")
+
+
+PRIVATE_GROUP_ID_FROM_ENV = os.environ.get("GROUP_ID_PRIVATE")
+if not PRIVATE_GROUP_ID_FROM_ENV:
+    raise ValueError("Private Group ID not found in the .env")
+PRIVATE_GROUP_ID = PRIVATE_GROUP_ID_FROM_ENV
+
+
+# Below is now i will remove later
 GMT_TIMEZONE = datetime.timezone(datetime.timedelta(hours=0, minutes=0))
 IST_TIMEZONE = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 
