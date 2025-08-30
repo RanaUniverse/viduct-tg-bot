@@ -7,7 +7,6 @@ import json
 
 import httpx
 
-
 base_url = "http://localhost:8000"
 
 
@@ -120,8 +119,35 @@ def get_user_lang(telegram_id: int) -> str | None:
         return None
 
 
+def change_user_language(user_tg_id: int, new_lang: str, new_name: str):
+    final_endpoint = "/client/bot/profile"
+    url = base_url + final_endpoint
+
+    tg_id = str(user_tg_id)
+    params = {
+        "telegram_id": tg_id,
+    }
+
+    data = {
+        "name": new_name,
+        "preffered_lang": new_lang,
+    }
+
+    response = httpx.put(url, params=params, json=data)
+
+    if response.status_code == 200:
+        print("Language Updated Successful...")
+
+    elif response.status_code == 422:
+        print("Some Error happens here...")
+
+    elif response.status_code == 404:
+        print("User not found")
+
+    else:
+        print("Unknow things happesn", response.status_code)
+
+
 if __name__ == "__main__":
     # check_get_profile(111)
-    # register_profile()
-    a = get_user_lang(111)
-    print(a)
+    change_user_language(999, "en", "abc")
